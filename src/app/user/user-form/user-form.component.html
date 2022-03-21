@@ -1,0 +1,46 @@
+<mat-card class="card">
+  <mat-card-title>
+    User form
+  </mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="userForm" (ngSubmit)="formSubmit()">
+      <mat-form-field appearance="fill" class="form-field-container">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field-container">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field-container">
+        <mat-label>Birth date</mat-label>
+        <input matInput type="date" formControlName="birthDate">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field-container">
+        <mat-label>Age</mat-label>
+        <input matInput type="number" formControlName="age">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field-container">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option value="admin">Admin</mat-option>
+          <mat-option value="regular">Regular</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button type="submit" mat-raised-button color="primary" [disabled]="!userForm.valid">SUBMIT</button>
+    </form>
+  </mat-card-content>
+  <mat-card-footer>
+    <p [ngStyle]="{ 'margin-left': '20px' }">
+      <b>Form status: </b>{{ userForm.valid ? 'valid' : 'invalid' }}
+    </p>
+    <p [ngStyle]="{ 'margin-left': '20px' }">
+      <b>Form data: </b>{{ userForm.value | json }}
+    </p>
+  </mat-card-footer>
+</mat-card>
